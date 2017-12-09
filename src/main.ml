@@ -1,19 +1,24 @@
-let input = "1122";;
+open Core
 
-let firstchar = 1122;;
+ let shift l n =
+     let first, second = List.split_n l n in
+     List.append second first
 
-(* how do I parse characters out of a string? *)
+ let solve n sequence =
+     let f acc a b = if a = b then acc + a else acc
+     in List.fold2_exn sequence (shift sequence n) ~init:0 ~f
 
-let int = int_of_string input;;
+ let sequence file =
+     In_channel.read_all file
+     |> String.to_list
+     |> List.filter_map ~f:Char.get_digit
 
-(* Okay, I have an int representing the first char. how do I loop? *)
+ let a file = sequence file |> solve 1
 
-let day1 = (
-    Printf.printf "%d\n" int;
-);;
+ let b file =
+      let seq = sequence file in
+      solve (List.length seq / 2) seq
 
-let () = (
-    (* Example Comment *)
-    Printf.printf "%s\n" "Hello, World!";
-    day1
-);;
+ let _ =
+     a "./2017/data/1a.txt" |> printf "a: %d\n";
+     b "./2017/data/1a.txt" |> printf "b: %d\n";

@@ -4,11 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "type": "shell",
-            "command": "make",
+            "type": "lime",
+            "command": "build",
             "problemMatcher": [
-                "$ocamlc"
+                "$haxe"
             ],
             "group": {
                 "kind": "build",

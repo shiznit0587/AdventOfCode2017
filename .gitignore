@@ -1,2 +1,3 @@
-_build
-main
+.haxelib
+bin
+TextAlignment

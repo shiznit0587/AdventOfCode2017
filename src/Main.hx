@@ -1,12 +1,10 @@
-class Main
-{
-    static function main()
-    {
-        new Main();
-    }
+import openfl.display.Sprite;
 
-    public function new()
-    {
-        trace("Hello World!");
+class Main extends Sprite {
+
+    public function new () {
+        super ();
+        trace("Hello World");
+        new Day1();
     }
 }

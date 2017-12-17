@@ -9,14 +9,19 @@ class Day1 {
 
         FileUtil.readInput("1", function(line) {
 
-            for (i in 0...line.length) {
-                var jA:Int = (i + 1) % line.length;
-                var jB:Int = (i + Std.int(line.length / 2)) % line.length;
-                if (line.charAt(i) == line.charAt(jA)) {
-                    sumA += Std.parseInt(line.charAt(i));
+            var digits:Array<Int> = Arrays.map(new CharIterator(line), Std.parseInt);
+
+            for (i in 0...digits.length) {
+
+                var jA:Int = (i + 1) % digits.length;
+                var jB:Int = (i + Std.int(digits.length / 2)) % digits.length;
+
+                if (digits[i] == digits[jA]) {
+                    sumA += digits[i];
                 }
-                if (line.charAt(i) == line.charAt(jB)) {
-                    sumB += Std.parseInt(line.charAt(i));
+
+                if (digits[i] == digits[jB]) {
+                    sumB += digits[i];
                 }
             }
         });

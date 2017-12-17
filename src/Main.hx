@@ -1,10 +1,7 @@
-import openfl.display.Sprite;
+class Main {
 
-class Main extends Sprite {
-
-    public function new () {
-        super ();
-        trace("Hello World");
+    public static function main() {
+        neko.Lib.println(":: Advent of Code ::");
         new Day1();
     }
 }

@@ -1,20 +1,14 @@
-import sys.io.File;
-import sys.io.FileInput;
-
 class Day1 {
 
     public function new() {
 
         neko.Lib.println("Running Day 1 - a");
 
-        var fileInput:FileInput = File.read("inputs/day1.txt", false);
-
         var sumA:Int = 0;
         var sumB:Int = 0;
 
-        while (!fileInput.eof()) {
+        FileUtil.readInput("1", function(line) {
 
-            var line:String = fileInput.readLine();
             for (i in 0...line.length) {
                 var jA:Int = (i + 1) % line.length;
                 var jB:Int = (i + Std.int(line.length / 2)) % line.length;
@@ -25,7 +19,7 @@ class Day1 {
                     sumB += Std.parseInt(line.charAt(i));
                 }
             }
-        }
+        });
 
         neko.Lib.println("Sum = " + sumA);
         neko.Lib.println("Running Day 1 - b");

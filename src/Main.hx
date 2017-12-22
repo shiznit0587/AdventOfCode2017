@@ -4,5 +4,6 @@ class Main {
         neko.Lib.println(":: Advent of Code ::");
         new Day1();
         new Day2();
+        new Day3();
     }
 }

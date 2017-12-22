@@ -13,7 +13,7 @@ class CharIterator {
     }
 
     public inline function next() {
-        return string.charAt(++index);
+        return string.charAt(index++);
     }
 
     public inline function iterator() return this;

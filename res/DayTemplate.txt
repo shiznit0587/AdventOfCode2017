@@ -1,0 +1,14 @@
+class Day<Template> {
+
+    public function new() {
+        neko.Lib.println("Running Day <Template> - a");
+
+        FileUtil.readInput("<Template>", function (line) {
+        });
+
+        neko.Lib.println("Running Day <Template> - b");
+
+        FileUtil.readInput("<Template>", function (line) {
+        });
+    }
+}

@@ -11,6 +11,10 @@ class Ints {
         return Lambda.fold(list, max, MIN);
     }
 
+    public static function listSum(list:Iterable<Int>) {
+        return Lambda.fold(list, function (a,b) return a+b, 0);
+    }
+
     public static inline function min(a:Int, b:Int):Int {
         return (a < b) ? a : b;
     }

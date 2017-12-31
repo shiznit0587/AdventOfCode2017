@@ -4,23 +4,22 @@ class Day11 {
     var directionCounts:Map<HexDirection, Int>;
 
     public function new() {
-        neko.Lib.println("Running Day 11 - a");
-
         FileUtil.readInput("11", function (line) {
+
+            var furthest:Int = Ints.MIN;
             directions = line.split(",").map(HexDirection.fromString);
             directionCounts = [for (direction in HexDirection) direction => 0];
 
             for (direction in directions) {
                 directionCounts[direction]++;
                 searchForReductions(direction);
+                furthest = Ints.max(furthest, Ints.listSum(directionCounts));
             }
 
+            neko.Lib.println("Running Day 11 - a");
             neko.Lib.println('Steps = ${Ints.listSum(directionCounts)}');
-        });
-
-        neko.Lib.println("Running Day 11 - b");
-
-        FileUtil.readInput("11", function (line) {
+            neko.Lib.println("Running Day 11 - b");
+            neko.Lib.println('Furthest = $furthest');
         });
     }
 

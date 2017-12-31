@@ -1,7 +1,7 @@
 class Day11 {
 
     var directions:Array<HexDirection>;
-    var directionCounts:Map<HexDirection, Int> = [for (direction in HexDirection) direction => 0];
+    var directionCounts:Map<HexDirection, Int>;
 
     public function new() {
         neko.Lib.println("Running Day 11 - a");
@@ -9,8 +9,6 @@ class Day11 {
         FileUtil.readInput("11", function (line) {
             directions = line.split(",").map(HexDirection.fromString);
             directionCounts = [for (direction in HexDirection) direction => 0];
-
-            // neko.Lib.println('Steps = $line');
 
             for (direction in directions) {
                 directionCounts[direction]++;
@@ -27,8 +25,6 @@ class Day11 {
     }
 
     private function searchForReductions(direction:HexDirection):Void {
-        // neko.Lib.println('Searching for reductions to $direction');
-
         // Check if direction can be countered.
         if (have(direction.opposite)) {
             counter(direction, direction.opposite);
@@ -61,19 +57,16 @@ class Day11 {
     }
 
     private inline function have(direction:HexDirection):Bool {
-        // neko.Lib.println('Have $direction = ${directionCounts[direction] > 0}');
         return directionCounts[direction] > 0;
     }
 
     private inline function reduce(direction:HexDirection, reduction:Pair<HexDirection>):Void {
-        // neko.Lib.println('Reducing $direction and ${reduction.left} to ${reduction.right}');
         directionCounts[direction]--;
         directionCounts[reduction.left]--;
         directionCounts[reduction.right]++;
     }
 
     private inline function counter(a:HexDirection, b:HexDirection):Void {
-        //neko.Lib.println('Counter $a and $b');
         directionCounts[a]--;
         directionCounts[b]--;
     }
@@ -120,41 +113,8 @@ abstract HexDirection(Int) to Int {
     public var opposite(get, never):HexDirection;
     private inline function get_opposite() return wrap(this + 3);
 
-    //public var adjacent(get, never):Pair<HexDirection>;
-    //private function get_adjacent() return new Pair(cast Ints.wrap(cast this - 1, 0, 6), cast Ints.wrap(cast this + 1, 0, 6));
-
     public var reductions(get, never):Array<Pair<HexDirection>>;
     private function get_reductions():Array<Pair<HexDirection>> {
-        // Each pair is this *with* 'left' = 'right'
-        /*switch (this) {
-            case N:
-                // N + SE = NE
-                // N + SW = NW
-                return [new Pair(SE, NE), new Pair(SW, NW)];
-            case NE:
-                // NE + S = SE
-                // NE + NW = N
-                return [new Pair(S, SE), new Pair(NW, N)];
-            case SE:
-                // SE + N = NE
-                // SE + SW = S
-                return [new Pair(N, NE), new Pair(SW, S)];
-            case S:
-                // S + NE = SE
-                // S + NW = SW
-                return [new Pair(NE, SE), new Pair(NW, SW)];
-            case SW:
-                // SW + N = NW
-                // SW + SE = S
-                return [new Pair(N, NW), new Pair(SE, S)];
-            case NW:
-                // NW + NE = N
-                // NW + S = SW
-                return [new Pair(NE, N), new Pair(S, SW)];
-            default:
-
-        }*/
-
         // If you combine the complementary directions with this one, the output is the neighbor between them.
         return [new Pair(wrap(this - 2), wrap(this - 1)), new Pair(wrap(this + 2), wrap(this + 1))];
     }

@@ -8,4 +8,13 @@ class Arrays {
         return a;
     }
 
+    public static function has<T>(arr:Array<T>, el:T):Bool {
+        return arr.indexOf(el) >= 0;
+    }
+
+    public static function add<T>(arr:Array<T>, el:T):Bool {
+        if (has(arr, el)) return false;
+        arr.push(el);
+        return true;
+    }
 }

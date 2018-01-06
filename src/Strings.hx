@@ -18,4 +18,8 @@ class Strings {
 
         return modified ? v.substring(leftIndex, rightIndex) : v;
     }
+
+    public static function charArray(v:String):Array<String> {
+        return Lambda.array(new CharIterator(v));
+    }
 }

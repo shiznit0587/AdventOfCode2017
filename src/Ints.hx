@@ -37,6 +37,10 @@ class Ints {
         return v;
     }
 
+    public static inline function inRange(v:Int, min:Int, max:Int):Bool {
+        return min <= v && v <= max;
+    }
+
     public static function wrap(v:Int, min:Int, max:Int):Int {
         if (min == max) return min;
 

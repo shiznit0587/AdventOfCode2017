@@ -21,4 +21,10 @@ class Arrays {
         arr.push(el);
         return true;
     }
+
+    public static function swap<T>(arr:Array<T>, a:Int, b:Int):Void {
+        var temp:T = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
 }

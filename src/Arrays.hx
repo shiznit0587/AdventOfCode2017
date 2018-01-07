@@ -8,6 +8,10 @@ class Arrays {
         return a;
     }
 
+    public static function last<T>(arr:Array<T>):T {
+        return arr[arr.length - 1];
+    }
+
     public static function has<T>(arr:Array<T>, el:T):Bool {
         return arr.indexOf(el) >= 0;
     }

@@ -33,7 +33,7 @@ class Day16 {
 
         var line:DanceLine = new DanceLine(programs);
 
-        neko.Lib.println('Program Order = $line');
+        // neko.Lib.println('Program Order = $line');
 
         var programNames:Array<String> = programs.map(function (p) return p.name).array();
 
@@ -43,15 +43,15 @@ class Day16 {
                 programNames = performDance(programNames, steps);
             }
         });
-        neko.Lib.println('Program Order = ${programNames.join("")}');
+        // neko.Lib.println('Program Order = ${programNames.join("")}');
 
         haxe.Timer.measure(function () {
             for (_ in 0...iterations) {
                 performLinkedDance(programMap, line, steps);
             }
         });
-        neko.Lib.println('times: spin=$spinTime, exchange=$exchangeTime, partner=$partnerTime');
-        neko.Lib.println('Program Order = $line');
+        // neko.Lib.println('times: spin=$spinTime, exchange=$exchangeTime, partner=$partnerTime');
+        // neko.Lib.println('Program Order = $line');
 
         neko.Lib.println("Running Day 16 - b");
 
